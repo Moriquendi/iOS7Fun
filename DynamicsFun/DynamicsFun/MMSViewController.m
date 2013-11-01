@@ -13,7 +13,7 @@
 
 NSInteger const ballsCount = 30;
 
-@interface MMSViewController ()
+@interface MMSViewController () <UIDynamicAnimatorDelegate>
 @property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) NSMutableArray *balls;
 @end
@@ -27,6 +27,7 @@ NSInteger const ballsCount = 30;
     [super viewDidLoad];
     
     self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+    self.animator.delegate = self;
 
     // Create balls views
     CGRect ballRect = CGRectMake(0, 0, 50, 50);
@@ -93,6 +94,18 @@ NSInteger const ballsCount = 30;
                          
                          [bombView removeFromSuperview];
                      }];
+}
+
+#pragma mark - <UIDynamicAnimatorDelegate>
+
+- (void)dynamicAnimatorDidPause:(UIDynamicAnimator *)animator
+{
+    // Removing push behaviors from the animator. We don't need them anymore.
+    for (UIDynamicBehavior *behaviour in self.animator.behaviors) {
+        if ([behaviour isKindOfClass:[UIPushBehavior class]]) {
+            [self.animator removeBehavior:behaviour];
+        }
+    }
 }
 
 @end
