@@ -22,6 +22,7 @@
 		9034008B1824464E00045348 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 903400891824464E00045348 /* InfoPlist.strings */; };
 		9034008D1824464E00045348 /* DynamicsFunTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9034008C1824464E00045348 /* DynamicsFunTests.m */; };
 		9034009A1824470C00045348 /* MMSBallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 903400991824470C00045348 /* MMSBallView.m */; };
+		9034009F18244B7E00045348 /* MMSBombView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9034009E18244B7E00045348 /* MMSBombView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		9034008C1824464E00045348 /* DynamicsFunTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicsFunTests.m; sourceTree = "<group>"; };
 		903400981824470C00045348 /* MMSBallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMSBallView.h; path = Classes/Views/MMSBallView.h; sourceTree = "<group>"; };
 		903400991824470C00045348 /* MMSBallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMSBallView.m; path = Classes/Views/MMSBallView.m; sourceTree = "<group>"; };
+		9034009D18244B7E00045348 /* MMSBombView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMSBombView.h; path = Classes/Views/MMSBombView.h; sourceTree = "<group>"; };
+		9034009E18244B7E00045348 /* MMSBombView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMSBombView.m; path = Classes/Views/MMSBombView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,8 @@
 			children = (
 				903400981824470C00045348 /* MMSBallView.h */,
 				903400991824470C00045348 /* MMSBallView.m */,
+				9034009D18244B7E00045348 /* MMSBombView.h */,
+				9034009E18244B7E00045348 /* MMSBombView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -273,6 +278,7 @@
 			files = (
 				903400781824464E00045348 /* MMSViewController.m in Sources */,
 				903400721824464E00045348 /* MMSAppDelegate.m in Sources */,
+				9034009F18244B7E00045348 /* MMSBombView.m in Sources */,
 				9034006E1824464E00045348 /* main.m in Sources */,
 				9034009A1824470C00045348 /* MMSBallView.m in Sources */,
 			);

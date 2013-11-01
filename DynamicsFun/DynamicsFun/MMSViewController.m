@@ -8,14 +8,18 @@
 
 #import "MMSViewController.h"
 #import "MMSBallView.h"
+#import "MMSBombView.h"
 
 NSInteger const ballsCount = 30;
 
 @interface MMSViewController ()
 @property (nonatomic, strong) UIDynamicAnimator *animator;
+@property (nonatomic, strong) NSMutableArray *balls;
 @end
 
 @implementation MMSViewController
+
+#pragma mark - UIViewController
 
 - (void)viewDidLoad
 {
@@ -26,7 +30,7 @@ NSInteger const ballsCount = 30;
     // Create balls views
     CGRect ballRect = CGRectMake(0, 0, 50, 50);
     CGPoint randomPosition;
-    NSMutableArray *balls = [[NSMutableArray alloc] initWithCapacity:ballsCount];
+    self.balls = [[NSMutableArray alloc] initWithCapacity:ballsCount];
     for (NSInteger i=0; i<ballsCount; i++) {
         MMSBallView *ball = [[MMSBallView alloc] initWithFrame:ballRect];
         ball.titleLabel.text = [NSString stringWithFormat:@"%i", i];
@@ -37,17 +41,58 @@ NSInteger const ballsCount = 30;
         
         ball.center = randomPosition;
         
-        [balls addObject:ball];
+        [self.balls addObject:ball];
     }
     
-    
-    UICollisionBehavior *collision = [[UICollisionBehavior alloc] initWithItems:balls];
+    // Collision with boundaries
+    UICollisionBehavior *collision = [[UICollisionBehavior alloc] initWithItems:self.balls];
     [collision setTranslatesReferenceBoundsIntoBoundary:YES];
     [self.animator addBehavior:collision];
     
-    UIGravityBehavior *gravity = [[UIGravityBehavior alloc] initWithItems:balls];
+    // Applying gravity to balls
+    UIGravityBehavior *gravity = [[UIGravityBehavior alloc] initWithItems:self.balls];
     [self.animator addBehavior:gravity];
     
+    // Add 'Tap gesture recognizer'
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                 action:@selector(plantBomb:)];
+    [self.view addGestureRecognizer:tapGesture];
+    
+}
+
+#pragma mark - MMSViewController
+
+- (void)plantBomb:(UITapGestureRecognizer *)tapGesture
+{
+    // User tapped somewhere.
+    // Plant the bomb which will explode after a while and push balls.
+    CGPoint touchedPosition = [tapGesture locationInView:self.view];
+    
+    CGFloat bombSize = 60;
+    CGRect bombRect = CGRectMake(touchedPosition.x - bombSize/2.f,
+                                 touchedPosition.y - bombSize/2.f,
+                                 bombSize,
+                                 bombSize);
+    MMSBombView *bombView = [[MMSBombView alloc] initWithFrame:bombRect];
+    [self.view addSubview:bombView];
+    
+    // Animate explosion
+    [UIView animateWithDuration:0.6
+                     animations:^{
+                         bombView.transform = CGAffineTransformScale(bombView.transform, 0, 0);
+                     }
+                     completion:^(BOOL finished) {
+                         for (UIView *ball in self.balls) {
+                             UIPushBehavior *push = [[UIPushBehavior alloc] initWithItems:@[ball]
+                                                                                     mode:UIPushBehaviorModeInstantaneous];
+                             CGFloat x = ball.center.x - bombView.center.x;
+                             CGFloat y = ball.center.y - bombView.center.y;
+                             push.pushDirection = CGVectorMake(x / 100, y / 100);
+                             [self.animator addBehavior:push];
+                         }
+                         
+                         [bombView removeFromSuperview];
+                     }];
 }
 
 @end
