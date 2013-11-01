@@ -23,6 +23,7 @@
 		9034008D1824464E00045348 /* DynamicsFunTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9034008C1824464E00045348 /* DynamicsFunTests.m */; };
 		9034009A1824470C00045348 /* MMSBallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 903400991824470C00045348 /* MMSBallView.m */; };
 		9034009F18244B7E00045348 /* MMSBombView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9034009E18244B7E00045348 /* MMSBombView.m */; };
+		903400A218244F3E00045348 /* MMSPushBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 903400A118244F3E00045348 /* MMSPushBehavior.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,8 @@
 		903400991824470C00045348 /* MMSBallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMSBallView.m; path = Classes/Views/MMSBallView.m; sourceTree = "<group>"; };
 		9034009D18244B7E00045348 /* MMSBombView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMSBombView.h; path = Classes/Views/MMSBombView.h; sourceTree = "<group>"; };
 		9034009E18244B7E00045348 /* MMSBombView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMSBombView.m; path = Classes/Views/MMSBombView.m; sourceTree = "<group>"; };
+		903400A018244F3E00045348 /* MMSPushBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMSPushBehavior.h; path = Classes/Utils/MMSPushBehavior.h; sourceTree = "<group>"; };
+		903400A118244F3E00045348 /* MMSPushBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMSPushBehavior.m; path = Classes/Utils/MMSPushBehavior.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,7 @@
 				903400701824464E00045348 /* MMSAppDelegate.h */,
 				903400711824464E00045348 /* MMSAppDelegate.m */,
 				903400731824464E00045348 /* Main.storyboard */,
+				903400A318244F4100045348 /* Utils */,
 				9034009C1824471600045348 /* Controllers */,
 				9034009B1824471200045348 /* Views */,
 				903400791824464E00045348 /* Images.xcassets */,
@@ -176,6 +180,15 @@
 				903400771824464E00045348 /* MMSViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		903400A318244F4100045348 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				903400A018244F3E00045348 /* MMSPushBehavior.h */,
+				903400A118244F3E00045348 /* MMSPushBehavior.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +292,7 @@
 				903400781824464E00045348 /* MMSViewController.m in Sources */,
 				903400721824464E00045348 /* MMSAppDelegate.m in Sources */,
 				9034009F18244B7E00045348 /* MMSBombView.m in Sources */,
+				903400A218244F3E00045348 /* MMSPushBehavior.m in Sources */,
 				9034006E1824464E00045348 /* main.m in Sources */,
 				9034009A1824470C00045348 /* MMSBallView.m in Sources */,
 			);

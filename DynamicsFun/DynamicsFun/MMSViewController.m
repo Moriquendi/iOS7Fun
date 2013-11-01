@@ -9,6 +9,7 @@
 #import "MMSViewController.h"
 #import "MMSBallView.h"
 #import "MMSBombView.h"
+#import "MMSPushBehavior.h"
 
 NSInteger const ballsCount = 30;
 
@@ -57,7 +58,6 @@ NSInteger const ballsCount = 30;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                  action:@selector(plantBomb:)];
     [self.view addGestureRecognizer:tapGesture];
-    
 }
 
 #pragma mark - MMSViewController
@@ -83,8 +83,8 @@ NSInteger const ballsCount = 30;
                      }
                      completion:^(BOOL finished) {
                          for (UIView *ball in self.balls) {
-                             UIPushBehavior *push = [[UIPushBehavior alloc] initWithItems:@[ball]
-                                                                                     mode:UIPushBehaviorModeInstantaneous];
+                             UIPushBehavior *push = [[MMSPushBehavior alloc] initWithItems:@[ball]
+                                                                                      mode:UIPushBehaviorModeInstantaneous];
                              CGFloat x = ball.center.x - bombView.center.x;
                              CGFloat y = ball.center.y - bombView.center.y;
                              push.pushDirection = CGVectorMake(x / 100, y / 100);
